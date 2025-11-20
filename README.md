@@ -1,7 +1,6 @@
 # RecyclAI — Tier 1 & Tier 2 Scope
 
-## Summary
-Smart, simple recycling guidance at your fingertips.
+> _Smart, simple recycling guidance at your fingertips._
 
 RecyclAI helps you quickly determine how to dispose of any item—whether it goes in recycling, compost, trash, or needs special disposal. Snap a photo, scan the recycling symbol, or enter a number, and our assistant will provide clear, actionable instructions tailored to your item.
 
