@@ -1,10 +1,18 @@
-
-# Epic: Recycling Assistant — Tier 1 & Tier 2 Scope (Updated)
+# RecyclAI — Tier 1 & Tier 2 Scope
 
 ## Summary
-We are building a lightweight **Recycling Assistant** that helps users determine how to dispose of an item: **recycle**, **compost**, **trash**, or **special disposal**.  
-Tier 1 delivers the core workflow (upload → detect recycling number → fallback classification → LLM message).  
-Tier 2 adds camera integration, PWA support, and location-based guidance.
+Smart, simple recycling guidance at your fingertips.
+
+RecyclAI helps you quickly determine how to dispose of any item—whether it goes in recycling, compost, trash, or needs special disposal. Snap a photo, scan the recycling symbol, or enter a number, and our assistant will provide clear, actionable instructions tailored to your item.
+
+Tier 2 adds live camera scanning, installable PWA support, and local recycling center guidance, making it even easier to recycle responsibly no matter where you are.
+
+Key Features:
+- Upload an image or enter a recycling number
+- Automatic material classification if the number is missing
+- AI-generated, easy-to-read disposal instructions
+- Tier 2: live camera capture + nearest recycling centers lookup
+- Fast, private, and easy-to-use
 
 ---
 
