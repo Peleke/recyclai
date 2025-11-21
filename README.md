@@ -143,4 +143,51 @@ flowchart TD
 
 ---
 
+## Project Structure
+
+### Directory Organization
+
+```
+recyclai/
+├── app/                    # Next.js 16 App Router
+│   ├── components/         # React components
+│   │   ├── ui/            # UI primitives and base components
+│   │   ├── RecyclAIBot.tsx # Lottie animation bot component
+│   │   ├── TypewriterText.tsx # Typewriter effect component
+│   │   └── StatusBar.tsx  # Development status bar
+│   ├── api/               # API routes
+│   │   ├── consult/       # Consultation endpoint (/api/consult)
+│   │   └── location/      # Location endpoint (/api/location)
+│   ├── globals.css        # Global styles and animations
+│   ├── layout.tsx         # Root layout with metadata
+│   └── page.tsx           # Homepage with animations
+├── lib/                   # Business logic and utilities
+├── prompts/               # LLM system prompts and templates
+├── public/                # Static assets
+│   ├── lottie/           # Lottie animation files
+│   │   └── animations/   # Animation assets
+│   └── icons/            # PWA icons and favicons
+├── docs/                  # Project documentation
+│   ├── prd.md            # Product Requirements Document
+│   ├── architecture.md   # System architecture
+│   └── sprint-artifacts/ # Sprint deliverables
+└── e2e/                   # End-to-end tests (Playwright)
+```
+
+### Architecture Patterns
+
+**Feature-Based Organization:** Each major feature gets its own directory structure for scalability
+
+**API Route Separation:** Consultation and location services have dedicated API directories
+
+**Component Hierarchy:** UI primitives in `/ui`, feature components in root `/components`
+
+**Asset Organization:** Lottie animations and PWA assets organized by type
+
+**Business Logic Isolation:** Core logic separated in `/lib` for testability
+
+**System Prompt Management:** LLM prompts organized in dedicated `/prompts` directory
+
+---
+
 _Transforming recycling guidance from complex detection to expert conversation — one LLM call at a time._
