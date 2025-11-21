@@ -1,27 +1,55 @@
+'use client'
+
+import { useState } from 'react'
 import RecyclAIBot from '@/components/RecyclAIBot'
+import TypewriterText from '@/components/TypewriterText'
 
 export default function HomePage() {
+  const [showSubtitle, setShowSubtitle] = useState(false)
+  const [showBot, setShowBot] = useState(false)
+  const [showCTA, setShowCTA] = useState(false)
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 pb-20">
-        {/* Main headline */}
-        <div className="text-center mb-8 animate-fade-in">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 pb-32">
+        {/* Main headline with typewriter */}
+        <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-            Hey, there! I'm RecyclAI.
+            <TypewriterText
+              text="Hey, there! I'm RecyclAI."
+              onComplete={() => setTimeout(() => setShowSubtitle(true), 300)}
+              speed={80}
+            />
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl">
+          <p
+            className={`text-lg text-gray-600 max-w-2xl transition-all duration-1000 ${
+              showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            onTransitionEnd={() => {
+              if (showSubtitle) setTimeout(() => setShowBot(true), 400)
+            }}
+          >
             Let's be green together.
           </p>
         </div>
 
         {/* RecyclAI Bot Centerpiece */}
-        <div className="mb-8 animate-slide-up">
+        <div
+          className={`mb-8 transition-all duration-800 ${
+            showBot ? 'opacity-100 translate-y-0 animate-slide-in-from-bottom' : 'opacity-0 translate-y-16'
+          }`}
+          onAnimationEnd={() => setTimeout(() => setShowCTA(true), 200)}
+        >
           <RecyclAIBot size="large" className="mx-auto" />
         </div>
 
-        {/* Call to action */}
-        <div className="text-center animate-slide-up">
+        {/* Call to action with drop-in animation */}
+        <div
+          className={`text-center transition-all duration-600 ${
+            showCTA ? 'opacity-100 translate-y-0 animate-drop-in' : 'opacity-0 -translate-y-8'
+          }`}
+        >
           <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 max-w-md mx-auto">
             <h2 className="text-xl font-semibold text-gray-900 mb-3">
               Let's get started
@@ -36,9 +64,12 @@ export default function HomePage() {
         </div>
       </div>
 
+      {/* Spacer to push footer below fold */}
+      <div className="h-screen"></div>
+
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">
-        <div className="max-w-4xl mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto px-4 py-12">
           {/* Horizontal icons with popouts */}
           <div className="flex justify-center space-x-8 mb-6">
             {/* AI Expert System */}
