@@ -20,7 +20,18 @@ cd recyclai
 npm install
 ```
 
-### 2. Development Server
+### 2. Environment Setup
+
+```bash
+# Copy environment template
+cp .env.example .env.local
+
+# Add your OpenAI API key to .env.local
+# Get your API key from: https://platform.openai.com/api-keys
+OPENAI_API_KEY=sk-your_actual_api_key_here
+```
+
+### 3. Development Server
 
 ```bash
 # Start development server with Turbopack (5-10x faster builds)
@@ -30,7 +41,7 @@ npm run dev
 # Hot reload enabled - changes update instantly
 ```
 
-### 3. Available Commands
+### 4. Available Commands
 
 ```bash
 # Development
@@ -49,7 +60,7 @@ npm run lint        # ESLint checking
 npm run type-check  # TypeScript type checking
 ```
 
-### 4. Project Features
+### 5. Project Features
 
 🎨 **Beautiful UI**: Neomorphic design with Lottie animations
 ⚡ **Turbopack**: 5-10x faster builds than traditional bundlers
@@ -58,7 +69,7 @@ npm run type-check  # TypeScript type checking
 ♿ **Accessible**: WCAG 2.1 AA compliant
 🔄 **Hot Reload**: Instant updates during development
 
-### 5. Development Workflow
+### 6. Development Workflow
 
 1. **Start Development:**
    ```bash
@@ -86,14 +97,16 @@ npm run type-check  # TypeScript type checking
    npm run build && npm start
    ```
 
-### 6. Key Files to Know
+### 7. Key Files to Know
 
 - `app/page.tsx` - Homepage with spectacular animations
 - `app/layout.tsx` - Root layout and metadata
 - `app/components/` - React components
 - `app/globals.css` - Global styles and animations
+- `lib/env.ts` - Environment variable types and validation
 - `package.json` - Dependencies and scripts
 - `next.config.js` - Next.js configuration
+- `.env.example` - Environment variable template
 
 **🎭 Pro Tip:** Toggle the development status bar with `Ctrl/Cmd + \`` for debugging info!
 
