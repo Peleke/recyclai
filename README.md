@@ -4,6 +4,101 @@
 
 **Sprint #3 LLM Application:** RecyclAI transforms recycling guidance from complex object detection into expert consultation. Our AI serves as a knowledgeable recycling expert, providing comprehensive disposal guidance through text descriptions and progressive image enhancement.
 
+## 🚀 Quickstart
+
+### Prerequisites
+
+- **Node.js 18+** (LTS recommended)
+- **npm** or **yarn**
+- **Git**
+
+### 1. Clone & Install
+
+```bash
+git clone https://github.com/Peleke/recyclai.git
+cd recyclai
+npm install
+```
+
+### 2. Development Server
+
+```bash
+# Start development server with Turbopack (5-10x faster builds)
+npm run dev
+
+# Server starts at http://localhost:3000
+# Hot reload enabled - changes update instantly
+```
+
+### 3. Available Commands
+
+```bash
+# Development
+npm run dev          # Start dev server with Turbopack
+npm run build        # Build for production
+npm start           # Start production server
+
+# Testing
+npm test            # Run unit tests (Jest + React Testing Library)
+npm run test:watch  # Run tests in watch mode
+npm run test:e2e    # Run end-to-end tests (Playwright)
+npm run test:all    # Run all tests
+
+# Quality
+npm run lint        # ESLint checking
+npm run type-check  # TypeScript type checking
+```
+
+### 4. Project Features
+
+🎨 **Beautiful UI**: Neomorphic design with Lottie animations
+⚡ **Turbopack**: 5-10x faster builds than traditional bundlers
+🧪 **Full Testing**: Jest + Playwright for comprehensive coverage
+📱 **Mobile-First**: Responsive design optimized for all devices
+♿ **Accessible**: WCAG 2.1 AA compliant
+🔄 **Hot Reload**: Instant updates during development
+
+### 5. Development Workflow
+
+1. **Start Development:**
+   ```bash
+   npm run dev
+   ```
+
+2. **Make Changes:**
+   - Components in `app/components/`
+   - Styles in `app/globals.css`
+   - API routes in `app/api/`
+
+3. **Test Changes:**
+   ```bash
+   npm run test:watch  # Unit tests
+   npm run test:e2e    # E2E tests
+   ```
+
+4. **Type Check:**
+   ```bash
+   npm run type-check
+   ```
+
+5. **Ready to Deploy:**
+   ```bash
+   npm run build && npm start
+   ```
+
+### 6. Key Files to Know
+
+- `app/page.tsx` - Homepage with spectacular animations
+- `app/layout.tsx` - Root layout and metadata
+- `app/components/` - React components
+- `app/globals.css` - Global styles and animations
+- `package.json` - Dependencies and scripts
+- `next.config.js` - Next.js configuration
+
+**🎭 Pro Tip:** Toggle the development status bar with `Ctrl/Cmd + \`` for debugging info!
+
+---
+
 ## Core Innovation
 **The Problem:** Complex OCR and image classification solve the wrong problem—users know what they have, they need expert guidance on proper disposal.
 
