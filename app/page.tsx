@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 pb-8">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 md:py-16 pb-8">
         <div className="neomorphic-container px-8 py-12 lg:px-16 lg:py-20">
         {/* Main headline with typewriter */}
         <div className="text-center mb-8">
@@ -70,8 +70,8 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* Spacer to push footer below fold */}
-      <div className="h-32"></div>
+      {/* Responsive spacer to push footer appropriately */}
+      <div className="h-16 md:h-24"></div>
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">

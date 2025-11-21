@@ -63,9 +63,6 @@ export default function RootLayout({
                     </div>
                     <h1 className="text-xl font-bold text-gray-900">RecyclAI</h1>
                   </div>
-                  <p className="text-sm text-gray-600 hidden sm:block">
-                    Expert recycling guidance through intelligent conversation
-                  </p>
                 </div>
               </div>
             </div>

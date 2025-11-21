@@ -36,7 +36,7 @@ const statusItems: StatusItem[] = [
 
 export default function StatusBar() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
-  const [isVisible, setIsVisible] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
 
   // Only show in non-production environments
   const isProduction = process.env.NODE_ENV === 'production' ||
