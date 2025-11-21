@@ -27,7 +27,12 @@ export default function HomePage() {
               showSubtitle ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
             }`}
             onTransitionEnd={() => {
-              if (showSubtitle) setTimeout(() => setShowBot(true), 400)
+              if (showSubtitle) {
+                setTimeout(() => {
+                  setShowBot(true)
+                  setShowCTA(true)
+                }, 400)
+              }
             }}
           >
             Let's be green together.
@@ -39,7 +44,6 @@ export default function HomePage() {
           className={`mb-8 transition-all duration-800 ${
             showBot ? 'opacity-100 translate-y-0 animate-slide-in-from-bottom' : 'opacity-0 translate-y-16'
           }`}
-          onAnimationEnd={() => setTimeout(() => setShowCTA(true), 200)}
         >
           <RecyclAIBot size="large" className="mx-auto" />
         </div>
