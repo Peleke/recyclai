@@ -12,7 +12,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 pb-32">
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 pb-8">
         {/* Main headline with typewriter */}
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
