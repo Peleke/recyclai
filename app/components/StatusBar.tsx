@@ -57,8 +57,21 @@ export default function StatusBar() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  if (isProduction || !isVisible) {
+  if (isProduction) {
     return null
+  }
+
+  // Show minimal toggle button when hidden
+  if (!isVisible) {
+    return (
+      <button
+        onClick={() => setIsVisible(true)}
+        className="fixed bottom-4 right-4 bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-lg transition-all duration-200 z-50 text-xs"
+        title="Show status bar (Ctrl/Cmd + `)"
+      >
+        📊
+      </button>
+    )
   }
 
   const getStatusColor = (status: StatusItem['status']) => {
