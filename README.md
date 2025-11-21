@@ -1,132 +1,146 @@
-# RecyclAI — Tier 1 & Tier 2 Scope
+# RecyclAI — AI-Powered Recycling Consultant
 
-> _Smart, simple recycling guidance at your fingertips._
+> _Expert recycling guidance through intelligent conversation_
 
-RecyclAI helps you quickly determine how to dispose of any item—whether it goes in recycling, compost, trash, or needs special disposal. Snap a photo, scan the recycling symbol, or enter a number, and our assistant will provide clear, actionable instructions tailored to your item.
+**Sprint #3 LLM Application:** RecyclAI transforms recycling guidance from complex object detection into expert consultation. Our AI serves as a knowledgeable recycling expert, providing comprehensive disposal guidance through text descriptions and progressive image enhancement.
 
-Tier 2 adds live camera scanning, installable PWA support, and local recycling center guidance, making it even easier to recycle responsibly no matter where you are.
+## Core Innovation
+**The Problem:** Complex OCR and image classification solve the wrong problem—users know what they have, they need expert guidance on proper disposal.
 
-Key Features:
-- Upload an image or enter a recycling number
-- Automatic material classification if the number is missing
-- AI-generated, easy-to-read disposal instructions
-- Tier 2: live camera capture + nearest recycling centers lookup
-- Fast, private, and easy-to-use
+**Our Solution:** LLM as Recycling Expert with rich system prompts, location-aware disposal rules, and conversational guidance that feels like talking to a real environmental consultant.
 
 ---
 
-## Tier 1: MVP Scope (Web App)
+## Phase 1: MVP — Image-Enhanced Text Consultation
 
-### User Flow
-1. User uploads an image **or** enters a recycling number manually.  
-2. If an image is uploaded, attempt OCR extraction of the recycling symbol/number.  
-3. If OCR succeeds → map recycling number → disposal category.  
-4. If OCR fails → prompt user for manual input.  
-5. If user input is absent or ambiguous → run image-based material classifier (plastic/paper/cardboard/glass/metal/etc.).  
-6. If classifier confidence is high → map material → disposal category.  
-7. If classifier confidence is low → prompt user via modal for a brief description (“What material is this mostly?”).  
-8. Use the resolved category (recycling number or material type) to map → disposal rules.  
-9. LLM formats final user-facing disposal message.  
-10. Display result (category, instructions, confidence, retry option).
+### User Flow (Simplified)
+1. **Input Options:** Text description OR upload image + describe item
+2. **Expert Analysis:** LLM processes description with comprehensive recycling knowledge
+3. **Location Context:** System includes user location for specific disposal rules
+4. **Expert Guidance:** Detailed disposal instructions + local resources + environmental education
+5. **Structured Output:** Clear disposal method, local centers, why it matters
 
-### Functional Requirements
-- Accept image upload (PNG/JPG).  
-- Accept manual recycling-number input fallback.  
-- OCR for “♺ #” extraction.  
-- Material classifier for fallback when number is absent.  
-- User prompt modal for clarification if classifier is low confidence.  
-- Mapping from recycling number/material → disposal category.  
-- LLM message formatter.  
-- Simple, mobile-friendly UI.
+### Core Features
+- **Dual Input Mode:** Text description (primary) + optional image reference
+- **AI Expert Consultant:** Rich system prompt with recycling symbol knowledge, material properties, disposal rules
+- **Location Awareness:** ZIP code integration for municipal-specific guidance
+- **Structured Responses:** Disposal method + local resources + educational context
+- **Conversation Flow:** Follow-up questions for complex items (batteries in electronics, etc.)
 
-### Non-Functional Requirements
-- No authentication required.  
-- Deployment via static hosting + Next.js API routes.  
-- Images processed transiently (no storage).  
-- Response time target: < 3s.  
-- Lightweight OCR + classifier.
+### Technical Implementation
+- **LLM Core:** OpenAI API with pre-configured expert system prompt
+- **Variables:** `{item_description}`, `{user_location}`, `{has_image: boolean}`, `{complexity_level}`
+- **Response Format:** JSON structure for disposal method, instructions, local resources, confidence
+- **Framework:** Next.js with form interface and API routes
+- **Sprint #3 Compliance:** System prompts, structured input/output, no external tools
 
 ---
 
-## Tier 1 Mermaid Diagram (Overall Flow)
-```mermaid
-flowchart TD
+## Phase 2: Vision Upgrade — Direct Image Analysis
 
-A[User Uploads Image or Enters Number] --> B{Image Provided?}
-B -->|Yes| C[Run OCR for Recycling Number]
-B -->|No| D[Use Manual Input]
+### Enhanced Flow
+1. **Visual Input:** Upload image → GPT-4V direct analysis → Item identification
+2. **Reduced Friction:** Text description becomes optional/validation
+3. **Same Expert Output:** Maintains comprehensive disposal guidance format
+4. **Progressive UX:** "Upload photo and we'll figure out what it is"
 
-C --> E{OCR Found Number?}
-E -->|Yes| F[Map Number to Disposal Category]
-E -->|No| G[Prompt User for Manual Number]
+### Technical Upgrade
+- **Vision API:** Switch to OpenAI GPT-4V for image analysis
+- **Enhanced Prompts:** System prompt handles both text and visual context
+- **Same Output:** Maintains structured response format for consistency
+- **Backward Compatible:** Text mode still available for complex items
 
-G --> H{Manual Number Provided?}
-H -->|Yes| F
-H -->|No| I[Run Material Classifier]
+---
 
-I --> J{High Confidence?}
-J -->|Yes| K[Map Material to Disposal Category]
-J -->|No| L[Prompt User for Material Description]
+## System Prompt Architecture
 
-L --> M[Map User Description to Category]
-
-F --> N[LLM Formats Disposal Message]
-K --> N
-M --> N
-
-N --> O[Display Result]
+### Core Persona
+```
+Role: Expert Recycling and Environmental Consultant
+Knowledge: Comprehensive recycling symbols (1-7), material properties, disposal methods
+Context: Location-specific municipal rules, hazardous waste protocols
+Personality: Helpful, knowledgeable, environmentally conscious, educational
 ```
 
-## Tier 2: Expanded Features (PWA + Location Tools)
+### Input Variables
+- `{item_description}`: User's text description of item
+- `{user_location}`: ZIP code or city for local disposal rules
+- `{has_image}`: Boolean flag for enhanced context
+- `{complexity_level}`: Simple item vs. complex multi-material disposal
 
-### Added Functionality
+### Output Structure
+```json
+{
+  "disposal_method": "recycle|compost|trash|special_disposal|hazardous_waste",
+  "instructions": "Specific step-by-step disposal guidance",
+  "local_resources": "Nearest recycling centers, hazardous waste days",
+  "why_it_matters": "Environmental impact education",
+  "confidence": "high|medium|low",
+  "follow_up_questions": ["For complex items requiring clarification"]
+}
+```
 
--   Camera capture via `<input capture="environment">` or `getUserMedia`.
-    
--   Installable PWA with offline caching.
-    
--   Local recycling center lookup.
-    
--   Location-based rule mapping for disposal guidance.
-    
--   Improved UX for quick scanning.
+---
 
-### Tier 2 Mermaid Diagram (Camera + PWA Flow)
+## Flow Diagram (LLM-Centric)
 
 ```mermaid
 flowchart TD
+    A[User Input: Text Description + Optional Image] --> B[Rich System Prompt Processing]
+    B --> C[LLM Expert Analysis]
+    C --> D[Location-Specific Rule Application]
+    D --> E[Structured Response Generation]
+    E --> F[Display Expert Guidance]
 
-A[Open App / PWA] --> B{Camera Permission Granted?}
-B -->|No| C[Show Permission Request Screen]
-B -->|Yes| D[Camera Live View]
+    F --> G{Need Clarification?}
+    G -->|Yes| H[Follow-up Questions]
+    G -->|No| I[Complete Guidance Provided]
 
-C --> D
-
-D --> E[User Captures Image]
-
-E --> F[Run OCR for Number]
-F --> G{Number Found?}
-
-G -->|Yes| H[Map Number to Category]
-G -->|No| I[Run Material Classifier]
-
-I --> J{High Confidence?}
-J -->|Yes| K[Map Material to Category]
-J -->|No| L[Prompt User for Description]
-
-L --> M[Map Description to Category]
-
-H --> N[LLM Formats Disposal Message]
-K --> N
-M --> N
-
-N --> O[Show Result Modal]
-
-O --> P{Location Feature Enabled?}
-P -->|Yes| Q[Nearest Recycling Centers]
-P -->|No| R[End Interaction]
-Q --> R
+    H --> J[User Response] --> B
+    I --> K[Session Complete]
 ```
 
-# UX Wireframes
-TBD; I'll swing back with proper wireframes/mockups soon.
+## Progressive Enhancement Roadmap
+
+### Phase 1 (MVP - Week 1)
+- ✅ Text-based expert consultation
+- ✅ Image upload for user reference
+- ✅ Sprint #3 requirement compliance
+- ✅ Location-aware disposal guidance
+
+### Phase 2 (Vision - Week 2)
+- 🔄 GPT-4V direct image analysis
+- 🔄 Optional text descriptions
+- 🔄 Enhanced "magic" factor
+
+### Phase 3 (Future - Post-Sprint)
+- 📋 Multi-turn conversations for complex items
+- 📋 Municipal database integration
+- 📋 Gamified environmental education
+
+---
+
+## Sprint #3 Requirement Alignment
+
+✅ **System Prompts with Variables:** Rich recycling expert prompt with location and context variables
+✅ **Structured Input/Output:** Form input → JSON response format for immediate UI use
+✅ **Well-defined Prompt Structure:** Pre-configured expert persona with variable placeholders
+✅ **Multiple LLM Calls:** Optional follow-up questions for complex disposal scenarios
+✅ **No Tools/MCP:** Pure LLM API calls with structured prompts
+✅ **Makes It Pop:** Expert-level guidance that surprises users with depth and local specificity
+
+---
+
+## Demo Video Structure
+
+1. **Text Mode Demo:** "Old smartphone" → Expert disposal guidance with local resources
+2. **Image Mode Demo:** Upload photo → Enhanced description → Same expert analysis
+3. **System Prompt Showcase:** Show prompt structure and variable substitution in playground
+4. **Response Parsing:** Highlight JSON structure feeding directly into clean UI
+5. **"Holy Shit" Moment:** Depth of knowledge and local specificity from simple inputs
+
+**Bonus Comparison:** Phase 1 (text) vs Phase 2 (vision) showing progressive enhancement without losing expert quality.
+
+---
+
+_Transforming recycling guidance from complex detection to expert conversation — one LLM call at a time._
