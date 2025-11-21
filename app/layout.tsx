@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   creator: 'RecyclAI',
   publisher: 'RecyclAI',
   robots: 'index, follow',
+  manifest: '/manifest.json',
+  icons: {
+    icon: '/icons/icon-192x192.png',
+    apple: '/icons/icon-192x192.png',
+  },
   openGraph: {
     title: 'RecyclAI - Expert Recycling Guidance',
     description: 'Expert recycling guidance through intelligent conversation. Get personalized disposal advice for any item.',
