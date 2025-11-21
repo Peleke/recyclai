@@ -52,19 +52,21 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body className={`${inter.className} antialiased`}>
-        <div id="root" className="min-h-screen flex flex-col">
-          <header className="bg-white shadow-sm border-b border-gray-200">
+        <div id="root" className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+          <header className="neomorphic-header sticky top-0 z-40">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-2">
-                  <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">♻️</span>
+              <div className="neomorphic-container px-6 py-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">♻️</span>
+                    </div>
+                    <h1 className="text-xl font-bold text-gray-900">RecyclAI</h1>
                   </div>
-                  <h1 className="text-xl font-bold text-gray-900">RecyclAI</h1>
+                  <p className="text-sm text-gray-600 hidden sm:block">
+                    Expert recycling guidance through intelligent conversation
+                  </p>
                 </div>
-                <p className="text-sm text-gray-600 hidden sm:block">
-                  Expert recycling guidance through intelligent conversation
-                </p>
               </div>
             </div>
           </header>

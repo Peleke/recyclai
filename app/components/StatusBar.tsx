@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 interface StatusItem {
   id: string
@@ -36,6 +36,7 @@ const statusItems: StatusItem[] = [
 
 export default function StatusBar() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [isVisible, setIsVisible] = useState(true)
 
   // Only show in non-production environments
   const isProduction = process.env.NODE_ENV === 'production' ||
@@ -43,7 +44,20 @@ export default function StatusBar() {
                        process.env.ENVIRONMENT === 'production' ||
                        process.env.ENVIRONMENT?.startsWith('prod')
 
-  if (isProduction) {
+  // Keyboard shortcut to toggle status bar (Ctrl/Cmd + `)
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === '`') {
+        event.preventDefault()
+        setIsVisible(prev => !prev)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  if (isProduction || !isVisible) {
     return null
   }
 
@@ -56,7 +70,7 @@ export default function StatusBar() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-green-50 border-t border-green-200 px-4 py-2 pb-4 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-green-50 border-t border-green-200 px-4 py-2 pb-4 z-50 backdrop-blur-sm bg-opacity-90">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <span className="text-sm font-medium text-green-700">Development Status:</span>
@@ -85,9 +99,18 @@ export default function StatusBar() {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs text-green-600">Live</span>
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <span className="text-xs text-green-600">Live</span>
+          </div>
+          <button
+            onClick={() => setIsVisible(false)}
+            className="text-xs text-gray-500 hover:text-gray-700 transition-colors px-2 py-1 rounded hover:bg-green-100"
+            title="Hide status bar (Ctrl/Cmd + `)"
+          >
+            ✕
+          </button>
         </div>
       </div>
     </div>

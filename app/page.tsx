@@ -10,9 +10,10 @@ export default function HomePage() {
   const [showCTA, setShowCTA] = useState(false)
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Main content area */}
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-16 pb-8">
+        <div className="neomorphic-container px-8 py-12 lg:px-16 lg:py-20">
         {/* Main headline with typewriter */}
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
@@ -66,6 +67,7 @@ export default function HomePage() {
             </button>
           </div>
         </div>
+        </div>
       </div>
 
       {/* Spacer to push footer below fold */}
@@ -74,6 +76,7 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">
         <div className="max-w-4xl mx-auto px-4 py-12">
+          <div className="neomorphic-container bg-gradient-to-br from-green-800 to-green-900 px-8 py-8">
           {/* Horizontal icons with popouts */}
           <div className="flex justify-center space-x-8 mb-6">
             {/* AI Expert System */}
@@ -121,6 +124,7 @@ export default function HomePage() {
             <p className="text-green-200 text-xs">
               © 2024 RecyclAI. Making recycling accessible and educational for everyone.
             </p>
+          </div>
           </div>
         </div>
       </footer>
