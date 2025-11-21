@@ -56,7 +56,7 @@ export default function StatusBar() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-green-50 border-t border-green-200 px-4 py-2 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-green-50 border-t border-green-200 px-4 py-2 pb-4 z-50">
       <div className="max-w-4xl mx-auto flex items-center justify-between">
         <div className="flex items-center space-x-4">
           <span className="text-sm font-medium text-green-700">Development Status:</span>
