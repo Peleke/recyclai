@@ -76,7 +76,6 @@ export default function HomePage() {
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">
         <div className="max-w-4xl mx-auto px-4 py-12">
-          <div className="neomorphic-container bg-gradient-to-br from-green-800 to-green-900 px-8 py-8">
           {/* Horizontal icons with popouts */}
           <div className="flex justify-center space-x-8 mb-6">
             {/* AI Expert System */}
@@ -124,7 +123,6 @@ export default function HomePage() {
             <p className="text-green-200 text-xs">
               © 2024 RecyclAI. Making recycling accessible and educational for everyone.
             </p>
-          </div>
           </div>
         </div>
       </footer>
