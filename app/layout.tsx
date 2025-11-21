@@ -1,6 +1,7 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import StatusBar from '@/components/StatusBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -12,8 +13,6 @@ export const metadata: Metadata = {
   creator: 'RecyclAI',
   publisher: 'RecyclAI',
   robots: 'index, follow',
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#22c55e',
   manifest: '/manifest.json',
   icons: {
     icon: '/icons/icon-192x192.png',
@@ -33,6 +32,12 @@ export const metadata: Metadata = {
     description: 'Expert recycling guidance through intelligent conversation. Get personalized disposal advice for any item.',
     creator: '@recyclai',
   },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#22c55e',
 }
 
 export default function RootLayout({
@@ -64,17 +69,12 @@ export default function RootLayout({
             </div>
           </header>
 
-          <main className="flex-1 max-w-4xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8">
+          <main className="flex-1 w-full">
             {children}
           </main>
 
-          <footer className="bg-gray-50 border-t border-gray-200 py-6">
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-              <p className="text-center text-sm text-gray-500">
-                © 2024 RecyclAI. Helping make recycling accessible and educational.
-              </p>
-            </div>
-          </footer>
+          {/* Status Bar */}
+          <StatusBar />
         </div>
       </body>
     </html>

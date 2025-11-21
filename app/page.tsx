@@ -1,94 +1,94 @@
-import Link from 'next/link'
+import RecyclAIBot from '@/components/RecyclAIBot'
 
 export default function HomePage() {
   return (
-    <div className="space-y-8">
-      {/* Hero Section */}
-      <div className="text-center space-y-6">
-        <div className="animate-fade-in">
-          <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-            Expert Recycling Guidance
+    <div className="min-h-screen flex flex-col">
+      {/* Main content area */}
+      <div className="flex-1 flex flex-col items-center justify-center px-4 py-8 pb-20">
+        {/* Main headline */}
+        <div className="text-center mb-8 animate-fade-in">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+            Hey, there! I'm RecyclAI.
           </h1>
-          <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-            Get personalized disposal advice for any item through intelligent conversation with our environmental expert AI.
+          <p className="text-lg text-gray-600 max-w-2xl">
+            Let's be green together.
           </p>
         </div>
 
-        {/* Call to Action */}
-        <div className="animate-slide-up">
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-8 max-w-md mx-auto">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
-              Ready to get started?
+        {/* RecyclAI Bot Centerpiece */}
+        <div className="mb-8 animate-slide-up">
+          <RecyclAIBot size="large" className="mx-auto" />
+        </div>
+
+        {/* Call to action */}
+        <div className="text-center animate-slide-up">
+          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 max-w-md mx-auto">
+            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+              Let's get started
             </h2>
             <p className="text-gray-600 mb-6">
-              Describe any item you need help disposing of, and get expert guidance on the most environmentally responsible approach.
+              Skip the confusion and get straight answers about proper disposal.
             </p>
-            <button className="btn-primary w-full">
+            <button className="w-full py-3 text-lg font-semibold rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
               Start Consultation
             </button>
           </div>
         </div>
       </div>
 
-      {/* Features Preview */}
-      <div className="grid md:grid-cols-3 gap-6 mt-12">
-        <div className="card">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary-600 text-xl">🧠</span>
+      {/* Footer */}
+      <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">
+        <div className="max-w-4xl mx-auto px-4 py-8">
+          {/* Horizontal icons with popouts */}
+          <div className="flex justify-center space-x-8 mb-6">
+            {/* AI Expert System */}
+            <div className="relative group">
+              <div className="w-12 h-12 bg-green-700 rounded-xl flex items-center justify-center group-hover:bg-green-600 transition-colors cursor-pointer">
+                <span className="text-xl">🧠</span>
+              </div>
+              {/* Popout */}
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+                AI Expert System
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              AI Expert System
-            </h3>
-            <p className="text-gray-600">
-              Powered by advanced AI with deep knowledge of recycling, composting, and proper disposal methods.
-            </p>
-          </div>
-        </div>
 
-        <div className="card">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary-600 text-xl">📍</span>
+            {/* Location-Aware */}
+            <div className="relative group">
+              <div className="w-12 h-12 bg-green-700 rounded-xl flex items-center justify-center group-hover:bg-green-600 transition-colors cursor-pointer">
+                <span className="text-xl">📍</span>
+              </div>
+              {/* Popout */}
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+                Location-Aware
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Location-Aware
-            </h3>
-            <p className="text-gray-600">
-              Get guidance specific to your area's recycling programs and local disposal options.
-            </p>
-          </div>
-        </div>
 
-        <div className="card">
-          <div className="text-center">
-            <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <span className="text-primary-600 text-xl">🌱</span>
+            {/* Educational */}
+            <div className="relative group">
+              <div className="w-12 h-12 bg-green-700 rounded-xl flex items-center justify-center group-hover:bg-green-600 transition-colors cursor-pointer">
+                <span className="text-xl">🌱</span>
+              </div>
+              {/* Popout */}
+              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+                Educational
+                <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
+              </div>
             </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Educational
-            </h3>
-            <p className="text-gray-600">
-              Learn about environmental impact and make informed decisions about disposal methods.
-            </p>
           </div>
-        </div>
-      </div>
 
-      {/* Status for Development */}
-      <div className="mt-12 p-4 bg-accent-50 border border-accent-200 rounded-lg">
-        <div className="flex items-center">
-          <div className="w-4 h-4 bg-accent-400 rounded-full mr-3"></div>
-          <div>
-            <h4 className="font-semibold text-accent-800">Development Status</h4>
-            <p className="text-accent-700 text-sm">
-              ✅ Next.js 16 with Turbopack initialized<br/>
-              🔄 Building core consultation engine...<br/>
-              📋 Epic 1: Foundation & Infrastructure in progress
+          {/* Footer text */}
+          <div className="text-center">
+            <p className="text-green-100 text-sm leading-relaxed mb-4">
+              Advanced AI with deep environmental knowledge, trained specifically to provide guidance specific to your area's programs, with local recycling centers and disposal options.
+            </p>
+            <p className="text-green-200 text-xs">
+              © 2024 RecyclAI. Making recycling accessible and educational for everyone.
             </p>
           </div>
         </div>
-      </div>
+      </footer>
     </div>
   )
 }
