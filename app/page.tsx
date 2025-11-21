@@ -8,6 +8,7 @@ export default function HomePage() {
   const [showSubtitle, setShowSubtitle] = useState(false)
   const [showBot, setShowBot] = useState(false)
   const [showCTA, setShowCTA] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
@@ -62,13 +63,45 @@ export default function HomePage() {
             <p className="text-gray-600 mb-6">
               Skip the confusion and get straight answers about proper disposal.
             </p>
-            <button className="w-full py-3 text-lg font-semibold rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105">
+            <button
+              onClick={() => setShowModal(true)}
+              className="w-full py-3 text-lg font-semibold rounded-xl bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
               Start Consultation
             </button>
           </div>
         </div>
         </div>
       </div>
+
+      {/* Coming Soon Modal */}
+      {showModal && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setShowModal(false)
+          }}
+        >
+          <div className="neomorphic-container max-w-md w-full p-8 text-center animate-drop-in">
+            <div className="mb-6">
+              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl text-white">🚀</span>
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Coming Soon!</h2>
+              <p className="text-gray-600">
+                We're putting the finishing touches on the consultation engine.
+                Check back soon for expert recycling guidance!
+              </p>
+            </div>
+            <button
+              onClick={() => setShowModal(false)}
+              className="w-full py-3 text-lg font-semibold rounded-xl bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700 text-white transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Responsive spacer to push footer appropriately */}
       <div className="h-16 md:h-24"></div>
