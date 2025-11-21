@@ -65,7 +65,7 @@ export default function HomePage() {
       </div>
 
       {/* Spacer to push footer below fold */}
-      <div className="h-screen"></div>
+      <div className="h-32"></div>
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-green-900 to-green-800 text-white">
